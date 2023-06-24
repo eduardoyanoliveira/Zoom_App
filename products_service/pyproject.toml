@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "products-service"
+version = "0.1.0"
+description = ""
+authors = ["eduardoyanoliveira <63554709+eduardoyanoliveira@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "products_service"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = {extras = ["all"], version = "^0.98.0"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
