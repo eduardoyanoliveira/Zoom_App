@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from presentation.controllers.product_controller import product_router
+
 app = FastAPI()
+
 
 origins = ["*"]
 
@@ -13,3 +16,4 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(product_router)

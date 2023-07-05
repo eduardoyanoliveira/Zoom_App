@@ -9,6 +9,7 @@ packages = [{include = "products_service"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = {extras = ["all"], version = "^0.98.0"}
+sqlalchemy = "^2.0.17"
 
 
 [build-system]
