@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, int, str, float, bool
 from pydantic import BaseModel
 
 class CreateProductRequest(BaseModel):

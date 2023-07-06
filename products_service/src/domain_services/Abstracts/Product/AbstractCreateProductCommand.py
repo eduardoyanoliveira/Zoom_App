@@ -4,5 +4,5 @@ from domain.entities.Product import Product
 
 class AbstractCreateProductCommand(ABC):
     @abstractmethod
-    def execute(self, product: CreateProductRequest) -> Product:
+    def execute(self, request: CreateProductRequest) -> Product:
         pass

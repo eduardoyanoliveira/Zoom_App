@@ -55,16 +55,24 @@ products: List[Product] = [
 ]
 
 
+class ProductRepository(AbstractProductRepository):
+    def __init__(self, db: Session):
+        self.db = db
+
+    def get_product_by_id(self, product_id: int) -> Product:
+        return self.db.query(Product).filter(Product.id == product_id).first()
+
+    def create_product(self, product: Product) -> Product:
+        self.db.add(product)
+        self.db.commit()
+        self.db.refresh(product)
+        return product
+    
+    def list(self) -> List[Product]:
+        return self.db.query(Product).all()
+
+
 # class ProductRepository(AbstractProductRepository):
-#     def __init__(self, session: Session):
-#         self.session = session
 
 #     def get_all_products(self) -> List[Product]:
-#         products = self.session.query(ProductModel).all()
-#         return [Product.from_orm(product) for product in products]
-
-
-class ProductRepository(AbstractProductRepository):
-
-    def get_all_products(self) -> List[Product]:
-        return products
+#         return products

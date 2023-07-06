@@ -10,6 +10,7 @@ packages = [{include = "products_service"}]
 python = "^3.11"
 fastapi = {extras = ["all"], version = "^0.98.0"}
 sqlalchemy = "^2.0.17"
+psycopg2 = "^2.9.6"
 
 
 [build-system]

@@ -9,7 +9,7 @@ Base = declarative_base()
 class ProductModel(Base):
     __tablename__ = 'product'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
     base_price = Column(Float)
     category_id = Column(Integer, ForeignKey('product_category.id'))
