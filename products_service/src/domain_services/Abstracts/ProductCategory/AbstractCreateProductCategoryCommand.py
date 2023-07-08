@@ -4,7 +4,6 @@ from contracts.ProductCategoryContracts.CreateProductCategory import CreateProdu
 from domain.entities.Product import ProductCategory
 
 class AbstractCreateProductCategoryCommand(ABC):
-
     @abstractmethod
     def execute(self, request: CreateProductCategoryRequest) -> ProductCategory:
         pass

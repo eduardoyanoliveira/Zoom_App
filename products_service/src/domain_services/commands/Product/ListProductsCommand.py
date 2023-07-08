@@ -11,4 +11,4 @@ class ListProductsCommand(AbstractListProductsCommand):
         self._product_repository = product_repository
 
     def execute(self) -> List[Product]:
-        return self._product_repository.get_all_products()
+        return self._product_repository.list()

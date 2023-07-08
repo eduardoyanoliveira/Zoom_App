@@ -9,8 +9,10 @@ packages = [{include = "products_service"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = {extras = ["all"], version = "^0.98.0"}
-sqlalchemy = "^2.0.17"
+sqlalchemy = {extras = ["postgresql"], version = "^2.0.18"}
 psycopg2 = "^2.9.6"
+alembic = "^1.11.1"
+psycopg2-binary = "^2.9.6"
 
 
 [build-system]

@@ -6,12 +6,10 @@ from domain_services.Abstracts.ProductCategory.AbstractProductCategoryRepository
 
 class CreateProductCategoryCommand(AbstractCreateProductCategoryCommand):
 
-    _product_category_repository: AbstractProductCategoryRepository
-
     def __init__(self, product_category_repository: AbstractProductCategoryRepository) -> None:
         self._product_category_repository = product_category_repository
     
     def execute(self, request: CreateProductCategoryRequest) -> ProductCategory:
-        product_category: ProductCategory = ProductCategory(request.name)
+        product_category: ProductCategory = ProductCategory(name= request.name, id=1)
         
         return self._product_category_repository.create(product_category)

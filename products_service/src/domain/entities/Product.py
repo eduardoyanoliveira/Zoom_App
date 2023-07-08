@@ -1,10 +1,10 @@
-from typing import Optional
+from pydantic import BaseModel
+from typing import Any, Optional
 from domain.entities.BaseEntity import BaseEntity
 
-class ProductCategory(BaseEntity):
+class ProductCategory(BaseModel):
     id: int
     name: str
-
 
 class Product(BaseEntity):
     id: int

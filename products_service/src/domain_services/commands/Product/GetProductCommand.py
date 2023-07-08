@@ -1,7 +1,6 @@
 from domain.entities.Product import Product
 from domain_services.Abstracts.Product.AbstractGetProductCommand import AbstractGetProductsCommand
 from domain_services.Abstracts.Product.AbstractProductRepository import AbstractProductRepository
-from typing import int
 
 class GetProductCommand(AbstractGetProductsCommand):
 
