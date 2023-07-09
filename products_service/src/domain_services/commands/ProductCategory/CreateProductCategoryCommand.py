@@ -10,6 +10,6 @@ class CreateProductCategoryCommand(AbstractCreateProductCategoryCommand):
         self._product_category_repository = product_category_repository
     
     def execute(self, request: CreateProductCategoryRequest) -> ProductCategory:
-        product_category: ProductCategory = ProductCategory(name= request.name, id=1)
+        product_category: ProductCategory = ProductCategory(name= request.name)
         
         return self._product_category_repository.create(product_category)

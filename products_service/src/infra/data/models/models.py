@@ -1,20 +1,27 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, MetaData, String, Float, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
+from datetime import datetime
 
 Base = declarative_base(metadata=MetaData())
 
-class ProductCategory(Base):
+class BaseDbModel(Base):
+    __abstract__ = True
+
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
+class ProductCategoryModel(BaseDbModel):
     __tablename__ = 'product_category'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String)
 
-    products = relationship("Product", back_populates="category")
+    products = relationship("ProductModel", back_populates="category")
 
 
-
-class Product(Base):
+class ProductModel(BaseDbModel):
     __tablename__ = "products"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -24,4 +31,4 @@ class Product(Base):
     amount = Column(Integer, nullable=True)
 
     category_id = Column(Integer, ForeignKey("product_category.id"))
-    category = relationship("ProductCategory", back_populates="products")
+    category = relationship("ProductCategoryModel", back_populates="products")

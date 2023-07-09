@@ -8,4 +8,4 @@ class GetProductCategoryCommand(AbstractGetProductCategoryCommand):
         self._product_category_repository = product_category_repository
 
     def execute(self, category_id: int):
-        return self._product_category_repository.get_category_by_id(category_id)
+        return self._product_category_repository.get(category_id)
