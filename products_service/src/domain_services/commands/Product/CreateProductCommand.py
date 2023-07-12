@@ -7,17 +7,21 @@ import datetime
 from domain_services.Abstracts.ProductCategory.AbstractProductCategoryRepository import AbstractProductCategoryRepository
 
 class CreateProductCommand(AbstractCreateProductCommand):
-    _product_repository: AbstractProductRepository
-    _category_repository: AbstractProductCategoryRepository
+
+    def __init__(self, 
+        product_repository: AbstractProductRepository,
+        category_repository: AbstractProductCategoryRepository
+    ) -> None:
+        self._product_repository = product_repository
+        self._category_repository = category_repository
 
     def execute(self, request: CreateProductRequest) -> Product:
         is_stored = request.amount is not None
 
         # Retrieve the category object from the repository
-        category = self._category_repository.get_category_by_id(request.category_id)
+        category = self._category_repository.get(request.category_id)
 
         product = Product(
-            id=request.id,
             created_at=datetime.datetime.now(),
             updated_at=datetime.datetime.now(),
             name=request.name,

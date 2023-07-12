@@ -6,6 +6,7 @@ from domain_services.Abstracts.ProductCategory.AbstractGetProductCategoryCommand
 from domain_services.Abstracts.ProductCategory.AbstractListProductCategoryCommand import AbstractListProductCategoryCommand
 from domain_services.Abstracts.ProductCategory.AbstractProductCategoryRepository import AbstractProductCategoryRepository
 from domain_services.commands.Product.CreateProductCommand import CreateProductCommand
+from domain_services.commands.Product.GetProductCommand import GetProductCommand
 from domain_services.commands.Product.ListProductsCommand import ListProductsCommand
 from domain_services.commands.ProductCategory.CreateProductCategoryCommand import CreateProductCategoryCommand
 from domain_services.commands.ProductCategory.GetProductCategoryCommand import GetProductCategoryCommand
@@ -34,4 +35,7 @@ def provide_list_products_command(db: Session) -> AbstractListProductsCommand:
     product_repository : AbstractProductRepository = provide_product_repository(db)
     return ListProductsCommand(product_repository)
 
+def provide_get_product_command(db: Session) -> AbstractListProductsCommand:
+    product_repository : AbstractProductRepository = provide_product_repository(db)
+    return GetProductCommand(product_repository)
 

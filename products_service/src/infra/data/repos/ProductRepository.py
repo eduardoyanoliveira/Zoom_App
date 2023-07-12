@@ -18,13 +18,13 @@ class ProductRepository(AbstractProductRepository):
     def create_product(self, product: Product) -> Product:
         try:
             mapped_product = ProductModel(
-                    id=product.id,
-                    name=product.name,
-                    base_price=product.base_price,
-                    amount=product.amount,
-                    is_stored=product.is_stored,
-                    category=product.category
-                )
+                id=product.id,
+                name=product.name,
+                base_price=product.base_price,
+                amount=product.amount,
+                is_stored=product.is_stored,
+                category_id=product.category.id
+            )
             self.db.add(mapped_product)
             self.db.commit()
             self.db.refresh(mapped_product)

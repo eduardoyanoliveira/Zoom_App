@@ -5,8 +5,7 @@ from domain_services.Abstracts.Product.AbstractProductRepository import Abstract
 
 
 class ListProductsCommand(AbstractListProductsCommand):
-    _product_repository: AbstractProductRepository
-    
+
     def __init__(self, product_repository: AbstractProductRepository) -> None:
         self._product_repository = product_repository
 

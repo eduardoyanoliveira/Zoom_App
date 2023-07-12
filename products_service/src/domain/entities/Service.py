@@ -5,12 +5,10 @@ from domain.entities.Product import Product
 
 
 class ServiceCategory(BaseEntity):
-    id: int
     name: str
 
 
 class ServiceProduct(BaseEntity):
-    id: int
     product: Product
     amount: int
     price: float 
@@ -25,7 +23,6 @@ class ServiceProduct(BaseEntity):
 
 
 class Service(BaseEntity):
-    id: int
     name: str
     products: list[ServiceProduct]
     category: ServiceCategory
