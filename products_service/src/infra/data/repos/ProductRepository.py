@@ -13,7 +13,9 @@ class ProductRepository(AbstractProductRepository):
         self.db = db
 
     def get_product_by_id(self, product_id: int) -> Product:
-        return self.db.query(Product).filter(Product.id == product_id).first()
+        mapped = self.db.query(ProductModel).filter(ProductModel.id == product_id).first()
+        return self._map_to_domain_entity(mapped)
+
 
     def create_product(self, product: Product) -> Product:
         try:
@@ -35,4 +37,17 @@ class ProductRepository(AbstractProductRepository):
     
     
     def list(self) -> List[Product]:
-        return self.db.query(Product).all()
+        mapped_products = self.db.query(ProductModel).all()
+        return [self._map_to_domain_entity(mapped) for mapped in mapped_products]
+    
+    def _map_to_domain_entity(self, mapped: ProductModel) -> Product:
+        return Product(
+            id=mapped.id,
+            created_at=mapped.created_at,
+            updated_at=mapped.updated_at,
+            name=mapped.name,
+            amount = mapped.amount,
+            base_price = mapped.base_price,
+            category = mapped.category,
+            is_stored= mapped.is_stored
+        )
